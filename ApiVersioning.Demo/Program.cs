@@ -16,7 +16,8 @@ builder.Services.AddApiVersioning(options =>
     // Combine Query String and Header versioning
     options.ApiVersionReader = ApiVersionReader.Combine(
         new QueryStringApiVersionReader("api-version"),  // Query string versioning
-        new HeaderApiVersionReader("api-version")        // Header versioning
+        new HeaderApiVersionReader("api-version"),        // Header versioning
+        new MediaTypeApiVersionReader("v")  // Media type versioning (expects version as 'v')
     );
 
 }).AddApiExplorer(options => {
